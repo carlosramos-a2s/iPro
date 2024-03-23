@@ -6,8 +6,7 @@ const apiKey = process.env.REACT_APP_API_KEY;
 const IntakeFormContext = createContext({})
 
 export const IntakeFormProvider = ({children}) => {
-    // const storedValue = JSON.parse(window.localStorage.getItem('projectName')) 
-
+   
     const [data, setData] = useState({
         sysName: "",
         sysDescription: "",

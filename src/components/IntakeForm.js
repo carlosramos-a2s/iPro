@@ -8,7 +8,7 @@ const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const IntakeForm = () => {
-    let projectName = JSON.parse(window.localStorage.getItem('projectName')) ? JSON.parse(window.localStorage.getItem('projctName')) : '';
+    let projectName = JSON.parse(window.localStorage.getItem('projectName')) ? JSON.parse(window.localStorage.getItem('projectName')) : '';
     let userEmail = JSON.parse(window.localStorage.getItem('userEmail')) ? JSON.parse(window.localStorage.getItem('userEmail')) : '';
     let companyName = JSON.parse(window.localStorage.getItem('companyName')) ? JSON.parse(window.localStorage.getItem('companyName')) : '';
     

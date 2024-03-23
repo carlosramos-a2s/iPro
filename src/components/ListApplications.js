@@ -6,16 +6,15 @@ const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const ListApplications = ({children}) => {
-
     const { data, isLoading, handleChange } = useListApplicationsContext(); 
     const [error, setError] = useState(null);
-    console.log('data', data)
 
     const navigate = useNavigate();
     const handleOnClick = () => navigate('/submitform');
 
     const handleViewApplication = (e) => {
         e.preventDefault();
+        window.localStorage.setItem('projectName', JSON.stringify(e.target.value));        
         
         navigate('/intakeform')
     }
@@ -38,22 +37,22 @@ const ListApplications = ({children}) => {
                 <div className="container data-container list-app-item">
                     {data.map((item, index) => (
                         <>
-                            <h4 className="data-type">{data[index].projectName}</h4>
-                            <div key={index} className="data-item">
-                                <div className="text-center">
-                                    <div className="row">
-                                        <div className="col-sm-6 view-app-status">
-                                            <p className="data-type">Status: {data[index].applicationStatus}</p>
-                                            <div className="progress">
-                                                <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-6 view-app-btn">
-                                        <button type="button" className="btn btn-secondary" value={data[index].projectName} onClick={handleViewApplication}>View Application</button>
+                        <h4 className="data-type" key={index}>{data[index].projectName}</h4>
+                        <div className="data-item">
+                            <div className="text-center">
+                                <div className="row">
+                                    <div className="col-sm-6 view-app-status">
+                                        <p className="data-type">Status: {data[index].applicationStatus}</p>
+                                        <div className="progress">
+                                            <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                                         </div>
                                     </div>
+                                    <div className="col-sm-6 view-app-btn">
+                                    <button type="button" className="btn btn-secondary" value={data[index].projectName} onClick={handleViewApplication}>View Application</button>
+                                    </div>
                                 </div>
-                            </div>          
+                            </div>
+                        </div>          
                         </>
                     ))}
                 </div>

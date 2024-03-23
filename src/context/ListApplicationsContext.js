@@ -7,11 +7,11 @@ const ListApplicationsContext = createContext({})
 
 
 export const ListApplicationsProvider = ({children}) => {
+    let storedUserEmail = JSON.parse(window.localStorage.getItem('userEmail')) ? JSON.parse(window.localStorage.getItem('userEmail')) : '';
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null);
-    let storedUserEmail = JSON.parse(window.localStorage.getItem('userEmail')) ? JSON.parse(window.localStorage.getItem('userEmail')) : '';
-   
+    
     const reqBody = {
         "requestEvent": "GET_APPLICATIONS",
         "requestBody": {
