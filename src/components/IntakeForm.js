@@ -8,9 +8,10 @@ const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const IntakeForm = () => {
-    let projectName = JSON.parse(window.localStorage.getItem('projectName'));
-    let userEmail = JSON.parse(window.localStorage.getItem('userEmail'));
-    let companyName = JSON.parse(window.localStorage.getItem('companyName'));
+    let projectName = JSON.parse(window.localStorage.getItem('projectName')) ? JSON.parse(window.localStorage.getItem('projctName')) : '';
+    let userEmail = JSON.parse(window.localStorage.getItem('userEmail')) ? JSON.parse(window.localStorage.getItem('userEmail')) : '';
+    let companyName = JSON.parse(window.localStorage.getItem('companyName')) ? JSON.parse(window.localStorage.getItem('companyName')) : '';
+    
     const { data, setData, handleChange } = useIntakeFormContext();
     const [isButtonDisabled, setButtonDisabled] = useState(false);
     const [isLoading, setIsLoading] = useState(false);

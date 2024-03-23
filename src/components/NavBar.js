@@ -20,9 +20,9 @@ const NavBar = () => {
                 <li className="nav-item">
                     <Link to="/" className="nav-link">Sales</Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <Link to="/submitform" className="nav-link">Workflow</Link>
-                </li>
+                </li> */}
             </ul>
         </div>
         
