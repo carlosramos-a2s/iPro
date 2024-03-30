@@ -3,7 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import { IntakeFormProvider } from './context/IntakeFormContext'
 import { NewAppProvider } from './context/NewAppContext'
 import { ListApplicationsProvider } from './context/ListApplicationsContext'
-import IntakeForm from './components/IntakeForm';
+// import IntakeForm from './components/IntakeForm';
+import MultiPartIntakeForm from './components/MultiPartIntakeForm';
 import ListApplications from './components/ListApplications';
 import NewApplicationForm from './components/NewApplicationForm';
 import Home from './components/Home';
@@ -13,7 +14,7 @@ function App() {
   return (
     <div>
       <NavBar />
-
+  
       <Routes>
         <Route path="/" element={
             <ListApplicationsProvider>
@@ -32,7 +33,7 @@ function App() {
         }/>
         <Route path="/intakeform" element={
             <IntakeFormProvider>
-              <IntakeForm />
+              <MultiPartIntakeForm />
             </IntakeFormProvider>
         }/>
       </Routes>

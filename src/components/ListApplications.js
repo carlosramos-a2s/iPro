@@ -26,15 +26,29 @@ const ListApplications = ({children}) => {
     let content = ''
     
     if (!data.length) {
-        content =  ( <div className="container-fluid no-data">
-                        <div className="container data-container">
-                            <strong>You have not created any applications yet...</strong> 
-                        </div>
-                    </div> )
+        content =  (           
+            <div className="container data-container no-data">
+                <div className="row">
+                    <div className="col-12 create-app">
+                        <button type="button" className="btn btn-success create-app-btn" onClick={handleOnClick}>Create application</button>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <strong>You have not created any applications yet...</strong>
+                    </div>
+                </div>
+                <br/> 
+            </div>
+        )
     } else {
         content =  (
             <div className="row">
                 <div className="container data-container list-app-item">
+                <div className="col-12 create-app">
+                    <button type="button" className="btn btn-success create-app-btn" onClick={handleOnClick}>Create application</button>
+                </div>
+                <hr/>
                     {data.map((item, index) => (
                         <>
                         <h4 className="data-type" key={index}>{data[index].projectName}</h4>
@@ -63,14 +77,12 @@ const ListApplications = ({children}) => {
     return (
         <div className="container-fluid">
             <div className="row">
-                <div className="col">
+                <div className="col-12">
                     <h1 className="page-heading-applications">Applications</h1>
                 </div>
-                <div className="col create-app">
-                    <button type="button" className="btn btn-success create-app-btn" onClick={handleOnClick}>Create application</button>
-                </div>
-                {content}
+               
             </div>
+            {content}
         </div>    
     )
 };

@@ -5,12 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* nav bar styles */
 
 #root > div > nav {
   background-color: #2b652b !important;
@@ -62,7 +65,7 @@ code {
   color: #2b652b;
   padding-top:25px;
   padding-bottom:20px;
-  margin-left: 20%;
+  margin-left: 10%;
 }
 
 .data-container { 
@@ -85,13 +88,13 @@ code {
 }
 
 .create-app {
-  padding-top: 23px;
+  padding-top: 0px;
   text-align: right;
 }
 
-.create-app-btn {
+/* .create-app-btn {
   margin-right: 21%;
-}
+} */
 
 .view-app-btn {
   padding-top: 10px;
@@ -116,13 +119,8 @@ code {
   font-weight: bold;
 }
 
-/**** NewApplicationForm styles ****/
+/* NewApplicationForm styles */
 
-.page-heading { 
-  text-align: center;
-  font-weight: extra-bold;
-  font-size: 2.5em;
-}
 
 .form-container {
   width: 50%;
@@ -192,11 +190,6 @@ code {
 
 /* ListApplications */
 
-.page-heading { 
-  text-align: center;
-  font-weight: extra-bold;
-  font-size: 2.5em;
-}
 .data-container { 
   width: 80%; 
   margin: 20px auto; 
@@ -330,6 +323,15 @@ code {
   color: red;
   font-weight: bold;
   font-size: larger;
+}
+
+/* Progress bar styles */
+
+
+/* Button grp styles */
+
+.button-container {
+  margin-left: 5%;
 }
 
 
