@@ -39,6 +39,9 @@ export const ListApplicationsProvider = ({children}) => {
                 setIsLoading(false); 
             })
         })();
+
+        setIsLoading(false)
+
     }, []);
 
     const handleChange = e => {

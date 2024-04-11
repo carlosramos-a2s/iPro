@@ -178,7 +178,7 @@ const MultiPartIntakeForm = () => {
                         </div>
                         <div className={`col-5 intake-form-controls-2 ${controlsHide}`}>
                             <button type="button" className="btn btn-secondary form-ctrl-btn" onClick={handleSaveApplication}>Save</button>
-                            <button type="button" className="btn btn-secondary form-ctrl-btn" onClick={handleCancel}>Cancel</button>
+                            <button type="button" className="btn btn-danger form-ctrl-btn" onClick={handleCancel}>Cancel</button>
                             <button type="submit" className="btn btn-warning form-ctrl-btn" disabled={!canSubmit}>Submit Application</button>
                         </div>
                     </div>
