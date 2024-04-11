@@ -7,59 +7,64 @@ const OverlayValues = () => {
     const content = (
         <>
             <div>
-                <label className="form-check-label" htmlFor="flexCheckDefault">
+                <label className="form-check-label" htmlFor="overlayAvailability">
                     Availability
                 </label>
-                <select className="form-select" aria-label="Default select example" name="overlayAvailability" id="overlayAvailability" value={data.overlayAvailability} onChange={handleChange}>
-                    <option value="1">High</option>
-                    <option value="2">Low</option>
-                    <option value="3">Moderate</option>
+                <select className="form-select" name="overlayAvailability" id="overlayAvailability" value={data.overlayAvailability} onChange={handleChange}>
+                    <option selected>--Choose--</option> 
+                    <option value="High">High</option>
+                    <option value="Low">Low</option>
+                    <option value="Moderate">Moderate</option>
                 </select>
             </div>
 
             <div>
-                <label className="form-check-label" htmlFor="flexCheckDefault">
+                <label className="form-check-label" htmlFor="overlayConfidentiality">
                     Confidentiality
                 </label>
-                <select className="form-select" aria-label="Default select example" name="overlayConfidentiality" id="overlayConfidentiality" value={data.overlayConfidentiality} onChange={handleChange}>
-                    <option value="1">High</option>
-                    <option value="2">Low</option>
-                    <option value="3">Moderate</option>
+                <select className="form-select" name="overlayConfidentiality" id="overlayConfidentiality" value={data.overlayConfidentiality} onChange={handleChange}>
+                    <option selected>--Choose--</option> 
+                    <option value="High">High</option>
+                    <option value="Low">Low</option>
+                    <option value="Moderate">Moderate</option>
                 </select>
             </div>
 
             <div>
-                <label className="form-check-label" htmlFor="flexCheckDefault">
+                <label className="form-check-label" htmlFor="overlayIntegrity">
                     Integrity
                 </label>
-                <select className="form-select" aria-label="Default select example" name="overlayIntegrity" id="overlayIntegrity" value={data.overlayIntegrity} onChange={handleChange}>
-                    <option value="1">High</option>
-                    <option value="2">Low</option>
-                    <option value="3">Moderate</option>
+                <select className="form-select" name="overlayIntegrity" id="overlayIntegrity" value={data.overlayIntegrity} onChange={handleChange}>
+                    <option selected>--Choose--</option> 
+                    <option value="High">High</option>
+                    <option value="Low">Low</option>
+                    <option value="Moderate">Moderate</option>
                 </select>
             </div>
 
             <div>
-                <label className="form-check-label" htmlFor="flexCheckDefault">
+                <label className="form-check-label" htmlFor="overlayOverlay">
                     Overlay
                 </label>
-                <select className="form-select" aria-label="Default select example" name="overlayOverlay" id="overlayOverlay" value={data.overlayOverlay} onChange={handleChange}>
-                    <option value="1">CDS</option>
-                    <option value="2">Non-Access</option>
-                    <option value="3">Transfer</option>
-                    <option value="4">Multi-level</option>
+                <select className="form-select" name="overlayOverlay" id="overlayOverlay" value={data.overlayOverlay} onChange={handleChange}>
+                    <option selected>--Choose--</option> 
+                    <option value="CDS">CDS</option>
+                    <option value="Non-Access">Non-Access</option>
+                    <option value="Transfer">Transfer</option>
+                    <option value="Multi-level">Multi-level</option>
                 </select>
             </div>
 
             <div>
-                <label className="form-check-label" htmlFor="flexCheckDefault">
+                <label className="form-check-label" htmlFor="overlayPrivacy">
                     Privacy
                 </label>
-                <select className="form-select" aria-label="Default select example" name="overlayPrivacy" id="overlayPrivacy" value={data.overlayPrivacy} onChange={handleChange}>
-                    <option value="1">High</option>
-                    <option value="2">Low</option>
-                    <option value="3">Medium</option>
-                    <option value="4">Non-Exempt</option>
+                <select className="form-select" name="overlayPrivacy" id="overlayPrivacy" value={data.overlayPrivacy} onChange={handleChange}>
+                    <option selected>--Choose--</option> 
+                    <option value="High">High</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Non-Exempt">Non-Exempt</option>
                 </select>
             </div>
         

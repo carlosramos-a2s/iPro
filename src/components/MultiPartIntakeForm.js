@@ -1,10 +1,10 @@
-//https://www.youtube.com/watch?v=0SB3h1AJYQ4
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useIntakeFormContext from "../hooks/useIntakeFormContext"
 import FormInputs from './FormInputs'
 import Spinner from './Spinner';
+import "react-step-progress-bar/styles.css";
+import { Stepper } from 'react-form-stepper';
 const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -12,8 +12,8 @@ const MultiPartIntakeForm = () => {
     let projectName = JSON.parse(window.localStorage.getItem('projectName')) ? JSON.parse(window.localStorage.getItem('projectName')) : '';
     let userEmail = JSON.parse(window.localStorage.getItem('userEmail')) ? JSON.parse(window.localStorage.getItem('userEmail')) : '';
     let companyName = JSON.parse(window.localStorage.getItem('companyName')) ? JSON.parse(window.localStorage.getItem('companyName')) : '';
-    
-    // const { data, setData, handleChange } = useIntakeFormContext();
+    let projectStatus = JSON.parse(window.localStorage.getItem('projectStatus')) ? JSON.parse(window.localStorage.getItem('projectStatus')) : '';
+    let controlsHide = projectStatus === 'SUBMITTED' && "controls-hide";
 
     const {
         title,
@@ -21,7 +21,7 @@ const MultiPartIntakeForm = () => {
         setPage, 
         data,
         setData,
-        handleChange,
+        canSubmit,
         disablePrev,
         disableNext,
         prevHide,
@@ -46,13 +46,12 @@ const MultiPartIntakeForm = () => {
             "userEmail": userEmail,
             "companyName": companyName,
             "projectName": projectName, 
-            "applicationId": `${userEmail}#${projectName.replaceAll(/\s/g,'')}` 
         }
     }
 
     const getData = () => {
         setIsLoading(true);
-        fetch(apiEndpoint, {
+        fetch(`${apiEndpoint}/getapp`, {
             method: 'POST',
             headers: {
                 "x-api-key": apiKey,
@@ -81,7 +80,6 @@ const MultiPartIntakeForm = () => {
             "userEmail": userEmail,
             "companyName": companyName,
             "projectName": projectName,
-            "applicationId": `${userEmail}#${projectName.replaceAll(/\s/g,'')}`,
             "applicationValues": data
         }
     }
@@ -89,7 +87,7 @@ const MultiPartIntakeForm = () => {
     const handleSaveApplication = (e) => {
         e.preventDefault(); 
         setIsLoading(true);
-        fetch(apiEndpoint, {
+        fetch(`${apiEndpoint}/updateapp`, {
                 method: 'POST',
                 headers: {
                     "x-api-key": apiKey,
@@ -113,11 +111,10 @@ const MultiPartIntakeForm = () => {
             }
     }
     
-     
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsLoading(true);
-        fetch(apiEndpoint, {
+        fetch(`${apiEndpoint}/updateapp`, {
                 method: 'POST',
                 headers: {
                     "x-api-key": apiKey,
@@ -142,27 +139,47 @@ const MultiPartIntakeForm = () => {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12">
-                        <h1 className="page-heading-applications">A&A Intake Workflow</h1>
+                        <h1 className="page-heading-applications">A&A Intake Workflow - {projectName}</h1>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <Stepper
+                            steps={[
+                                { label: 'System Info' }, 
+                                { label: 'Connectivity' }, 
+                                { label: 'Integrity & Availability' },
+                                { label: 'PII' },
+                                { label: 'Non-US Personnel' },
+                                { label: 'Specialty Systems' },
+                                { label: 'System Data'},
+                                { label: 'Data Description' },
+                                { label: 'Fisa Data' },
+                                { label: 'Overlay Values' },
+                                { label: 'System POC' }
+                                
+                            ]}
+                            activeStep={page}
+                        />
                     </div>
                 </div>
 
                 <form className="data-container intake-form" onSubmit={handleSubmit}>
                     <header className="form-header">
                     <div className="row">
-                        <div className="col-7">
+                        <div className="col-5">
                             <h2>{title[page]}</h2>
                         </div>
-                        <div className="col-5">
-                            <div className="button-container">  
-                                <div class="btn-group" role="group">
-                                    <button type="button" className={`btn btn-success ${prevHide}`} onClick={handlePrev} disabled={disablePrev}>Prev</button>
-                                    <button type="button" className={`btn btn-success ${nextHide}`} onClick={handleNext} disabled={disableNext}>Next</button>
-                                    {/* <button type="submit" className={`button ${submitHide}`} disabled={!canSubmit}>Submit</button> //removed !canSubmit to allow form submission */}
-                                    <button type="submit" className="form-submit btn btn-secondary" onClick={handleSaveApplication}>Save</button>
-                                    <button type="submit" className="form-cancel btn btn-danger" onClick={handleCancel}>Cancel</button>
-                                    <button type="submit" className={`btn btn-warning create-app-btn ${submitHide}`} disabled={isButtonDisabled}>Submit Application</button>
-                                </div>
+                        <div className="col-2">
+                            <div>  
+                                <button type="button" className={`btn btn-success form-ctrl-btn ${prevHide}`} onClick={handlePrev} disabled={disablePrev}>Prev</button>
+                                <button type="button" className={`btn btn-success form-ctrl-btn ${nextHide}`} onClick={handleNext} disabled={disableNext}>Next</button>
                             </div>
+                        </div>
+                        <div className={`col-5 intake-form-controls-2 ${controlsHide}`}>
+                            <button type="button" className="btn btn-secondary form-ctrl-btn" onClick={handleSaveApplication}>Save</button>
+                            <button type="button" className="btn btn-secondary form-ctrl-btn" onClick={handleCancel}>Cancel</button>
+                            <button type="submit" className="btn btn-warning form-ctrl-btn" disabled={!canSubmit}>Submit Application</button>
                         </div>
                     </div>
                     </header>

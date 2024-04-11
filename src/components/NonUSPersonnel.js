@@ -12,14 +12,30 @@ const NonUsPersonnel = () => {
                     Will this system allow any direct or indirect access to non-US users?
                 </label>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value={data.nonUSDirectAccessYes} onChange={handleChange} />
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="nonUSDirectAccess" 
+                        id="nonUSDirectAccessYes"
+                        checked={data.nonUSDirectAccess === 'Yes'}  
+                        value="Yes" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="nonUSDirectAccessYes">
                         Yes
                     </label>
                 </div>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value={data.nonUSDirectAccessNo} onChange={handleChange} />
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="nonUSDirectAccess" 
+                        id="nonUSDirectAccessNo" 
+                        checked={data.nonUSDirectAccess === 'No'}  
+                        value="No" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="nonUSDirectAccessNo">
                         No
                     </label>
                 </div>
@@ -31,14 +47,30 @@ const NonUsPersonnel = () => {
                     who have access to this system?
                 </label>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="nonUSReleasbleDataYes" id="nonUSReleasbleDataYes" value={data.nonUSReleasbleDataYes} onChange={handleChange} />
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="nonUSReleasbleData" 
+                        id="nonUSReleasbleDataYes" 
+                        checked={data.nonUSReleasbleData === 'Yes'} 
+                        value="Yes" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="nonUSReleasbleDataYes">
                         Yes
                     </label>
                 </div>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="nonUSReleasbleDataNo" id="nonUSReleasbleDataNo" value={data.nonUSReleasbleDataNo} onChange={handleChange} />
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="nonUSReleasbleData" 
+                        id="nonUSReleasbleDataNo"
+                        checked={data.nonUSReleasbleData === 'No'}  
+                        value="No" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="nonUSReleasbleDataNo">
                         No
                     </label>
                 </div>

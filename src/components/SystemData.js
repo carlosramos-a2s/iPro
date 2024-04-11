@@ -7,12 +7,13 @@ const SystemData = () => {
     const content = (
         <>
             <div>
-                <label className="form-check-label" htmlFor="flexCheckDefault">
+                <label className="form-check-label" htmlFor="sysDataRecordClass">
                     Record classification
                 </label>
-                <select className="form-select" aria-label="Default select example" name="sysDataRecordClass" id="sysDataRecordClass" value={data.sysDataRecordClass} onChange={handleChange}>
-                    <option value="1">Unclassified</option>
-                    <option value="2">Secret</option>
+                <select className="form-select" name="sysDataRecordClass" id="sysDataRecordClass" value={data.sysDataRecordClass} onChange={handleChange}>
+                    <option selected>--Choose--</option> 
+                    <option value="Unclassified">Unclassified</option>
+                    <option value="Secret">Secret</option>
                 </select>
             </div>
 
@@ -21,26 +22,43 @@ const SystemData = () => {
                     At anytime will your system store, process or transmit actual production data??
                 </label>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="sysDataProdDataYes" id="sysDataProdDataYes" value={data.sysDataProdDataYes} onChange={handleChange} />
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="sysDataProdData" 
+                        id="sysDataProdDataYes"
+                        checked={data.sysDataProdData === 'Yes'}  
+                        value="Yes" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="sysDataProdDataYes">
                         Yes
                     </label>
                 </div>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="sysDataProdDataNo" id="sysDataProdDataNo" value={data.sysDataProdDataNo} onChange={handleChange} />
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="sysDataProdData" 
+                        id="sysDataProdDataNo" 
+                        checked={data.sysDataProdData === 'No'}  
+                        value="No" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="sysDataProdDataNo">
                         No
                     </label>
                 </div>
             </div>
 
             <div>
-                <label className="form-check-label" htmlFor="flexCheckDefault">
+                <label className="form-check-label" htmlFor="sysDataKnownSystemTransfer">
                     Which known systems are you tranferring data to?
                 </label>
-                <select className="form-select" aria-label="Default select example" name="sysDataKnownSystemTransfer" id="sysDataKnownSystemTransfer" value={data.sysDataKnownSystemTransfer} onChange={handleChange}>
-                    <option value="1">Old system</option>
-                    <option value="2">New system</option>
+                <select className="form-select" name="sysDataKnownSystemTransfer" id="sysDataKnownSystemTransfer" value={data.sysDataKnownSystemTransfer} onChange={handleChange}>
+                    <option selected>--Choose--</option> 
+                    <option value="Old system">Old system</option>
+                    <option value="New system">New system</option>
                 </select>
             </div>
 
@@ -48,9 +66,10 @@ const SystemData = () => {
                 <label className="form-check-label" htmlFor="flexCheckDefault">
                 Which known systems are you receiving data from?
                 </label>
-                <select className="form-select" aria-label="Default select example" name="sysDataKnownSystemReceiving" id="sysDataKnownSystemReceiving" value={data.sysDataKnownSystemReceiving} onChange={handleChange}>
-                    <option value="1">Old system</option>
-                    <option value="2">New system</option>
+                <select className="form-select" name="sysDataKnownSystemReceiving" id="sysDataKnownSystemReceiving" value={data.sysDataKnownSystemReceiving} onChange={handleChange}>
+                    <option selected>--Choose--</option> 
+                    <option value="Old system">Old system</option>
+                    <option value="New system">New system</option>
                 </select>
             </div>
 

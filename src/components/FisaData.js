@@ -6,32 +6,72 @@ const FisaData = () => {
 
     const content = (
         <>
-            <label htmlFor="sysFunction">Will the system store, tranfer, process or display RAW minimized FISA? (RAW FISA)?</label>
             <div className="form-check">
-                <input className="form-check-input" type="checkbox" id="fisaRawMinimizedYes" name="fisaRawMinimizedYes" value={data.fisaRawMinimizedYes} onChange={handleChange}/>
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                    Yes
+                <label className="form-check-label">
+                    Will the system store, tranfer, process or display RAW minimized FISA? (RAW FISA)?
                 </label>
-            </div>
-            <div className="form-check">
-                <input className="form-check-input" type="checkbox" id="fisaRawMinimizedNo" name="fisaRawMinimizedNo" value={data.fisaRawMinimizedNo} onChange={handleChange}/>
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                    No
-                </label>
+                <div className="form-check">
+                    <input
+                        className="form-check-input" 
+                        type="radio" 
+                        name="fisaRawMinimized" 
+                        id="fisaRawMinimizedYes" 
+                        checked={data.fisaRawMinimized === 'Yes'} 
+                        value="Yes" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="fisaRawMinimizedYes">
+                        Yes
+                    </label>
+                </div>
+                <div className="form-check">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="fisaRawMinimized" 
+                        id="fisaRawMinimizedNo" 
+                        checked={data.fisaRawMinimized === 'No'} 
+                        value="No" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="fisaRawMinimizedNo">
+                        No
+                    </label>
+                </div>
             </div>
 
-            <label htmlFor="sysFunction">Will the system store, tranfer, process or display minimized FISA? (minimized FISA)?</label>
             <div className="form-check">
-                <input className="form-check-input" type="checkbox" id="fisaMinimizedYes" name="fisaMinimizedYes" value={data.fisaMinimizedYes} onChange={handleChange}/>
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                    Yes
+                <label className="form-check-label">
+                    Will the system store, tranfer, process or display minimized FISA? (minimized FISA)?
                 </label>
-            </div>
-            <div className="form-check">
-                <input className="form-check-input" type="checkbox" id="fisaMinimizedNo" name="fisaMinimizedNo" value={data.fisaMinimizedNo} onChange={handleChange}/>
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                    No
-                </label>
+                <div className="form-check">
+                    <input
+                        className="form-check-input" 
+                        type="radio" 
+                        name="fisaMinimized" 
+                        id="fisaMinimizedYes"
+                        checked={data.fisaMinimized === 'Yes'} 
+                        value="Yes" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="fisaMinimizedYes">
+                        Yes
+                    </label>
+                </div>
+                <div className="form-check">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="fisaMinimized" 
+                        id="fisaMinimizedNo" 
+                        checked={data.fisaMinimized === 'No'} 
+                        value="No" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="fisaMinimizedNo">
+                        No
+                    </label>
+                </div>
             </div>
         </>
     )

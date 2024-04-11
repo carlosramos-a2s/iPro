@@ -9,20 +9,8 @@ const NavBar = () => {
             <Link to="/" className="navbar-brand">5i</Link>
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to="/" className="nav-link">Home</Link>
+                    <Link to="/" className="nav-link">Applications</Link>
                 </li>
-                <li className="nav-item">
-                    <Link to="/" className="nav-link">Customers</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/" className="nav-link">Resources</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/" className="nav-link">Sales</Link>
-                </li>
-                {/* <li className="nav-item">
-                    <Link to="/submitform" className="nav-link">Workflow</Link>
-                </li> */}
             </ul>
         </div>
         

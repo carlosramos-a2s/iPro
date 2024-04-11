@@ -1,9 +1,6 @@
 import React from 'react';
-import { createContext, useState } from "react"
-import { useNavigate } from 'react-router-dom';
-const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
-const apiKey = process.env.REACT_APP_API_KEY;
-const IntakeFormContext = createContext({})
+import { createContext, useState, useEffect } from "react";
+const IntakeFormContext = createContext({});
 
 export const IntakeFormProvider = ({children}) => {
    
@@ -26,55 +23,42 @@ export const IntakeFormProvider = ({children}) => {
     const [data, setData] = useState({
         sysName: "",
         sysDescription: "",
-        sysFunction1: "",
-        sysFunction2: "",
-        sysFunction3: "",
-        sysFunction4: "",
+        sysFunctOpenSourceAnalysis: false,
+        sysFunctTechCapabilities: false,
+        sysFunctSupportInfraServices: false,
+        sysFunctProvideSigAnalysis: false,
         sysKnownSystem: "",
         connModel: "",
-        connNetWork1: "",
-        connNetWork2: "",
-        connNetWork3: "",
-        connNetWork4: "",
-        connNetWork5: "",
-        connC2S: "",
-        connNavyCDS: "",
-        connHighLowApprovalYes: "",
-        connHighLowApprovalNo: "",
-        connCdsSecResponsibilityYes: "",
-        connCdsSecResponsibilityNo: "",
-        connNoCDS: "",
-        intAuthoritativeDataStoreYes: "",
-        intAuthoritativeDataStoreNo: "",
-        intDownstreamFunctYes: "",
-        intDownstreamFunctNo: "",
+        connC2EConnection: false,
+        connOpenIntConnection: false,
+        connVerizonConnection: false,
+        connAAConnection: false,
+        connCS2Connection: false,
+        connC2SConnectionType: "",
+        connCDSConnectionTypeNavy:"",
+        connCdsSecResponsibility: "",
+        connExplainNo: "",
+        intAuthoritativeDataStore: "",
+        intDownstreamFunct: "",
         piiDataAmount: "",
         piiDataType: "",
-        nonUSDirectAccessYes: "",
-        nonUSDirectAccessNo: "",
-        nonUSReleasbleDataYes: "",
-        nonUSReleasbleDataNo: "",
-        specSysSpaceYes: "",
-        specSysSpaceNo: "",
-        specSysWirelessYes: "",
-        specSysWirelessNo: "",
+        nonUSDirectAccess: "",
+        nonUSReleasbleData: "",
+        specSysSpace: "",
+        specSysWireless: "",
         sysDataRecordClass: "",
-        sysDataProdDataYes: "",
-        sysDataProdDataNo: "",
+        sysDataProdData: "",
         sysDataKnownSystemTransfer: "",
         sysDataKnownSystemReceiving: "",
         sysDataSystemsList: "",
         dataDescription: "",
-        fisaRawMinimizedYes: "",
-        fisaRawMinimizedNo: "",
-        fisaMinimizedYes: "",
-        fisaMinimizedNo: "",
+        fisaRawMinimized: "",
+        fisaMinimized: "",
         overlayAvailability: "",
         overlayConfidentiality: "",
         overlayIntegrity: "",
         overlayOverlay: "",
         overlayPrivacy: "",
-        sysConnectivityModel: "",
         sysPocAltSysOwner: "",
         sysPocSponsorOrg: "",
         sysPocDevOrg: "",
@@ -85,25 +69,16 @@ export const IntakeFormProvider = ({children}) => {
         sysPocManagingOrg: ""
     });
 
-    // const canSubmit = [...Object.values(requiredInputs)].every(Boolean) && page === Object.keys(title).length - 1
+    const canSubmit = 
+        (data.sysName && data.sysDescription && data.sysKnownSystem) 
+        && (data.sysFunctOpenSourceAnalysis || data.sysFunctTechCapabilities || data.sysFunctSupportInfraServices || data.sysFunctProvideSigAnalysis) 
 
-    const canNextPage1 = Object.keys(data)
-    .filter(key => key.startsWith('bill') && key !== 'billAddress2')
-    .map(key => data[key])
-    .every(Boolean)
-
-    const canNextPage2 = Object.keys(data)
-        .filter(key => key.startsWith('ship') && key !== 'shipAddress2')
-        .map(key => data[key])
-        .every(Boolean)
+     // const canSubmit = [...Object.values(data)].every(Boolean)
 
     const disablePrev = page === 0
 
-    //Change made to enable previous and next buttons.
     const disableNext =
         (page === Object.keys(title).length - 1)
-        // || (page === 0 && !canNextPage1)
-        // || (page === 1 && !canNextPage2)
 
     const prevHide = page === 0 && "remove-button"
 
@@ -112,7 +87,6 @@ export const IntakeFormProvider = ({children}) => {
     const submitHide = page !== Object.keys(title).length - 1 && "remove-button"
 
     const handleChange = e => {
-        console.log(e.target.name);
 
         const type = e.target.type
 
@@ -131,7 +105,7 @@ export const IntakeFormProvider = ({children}) => {
     }
 
     return (
-        <IntakeFormContext.Provider value={{title, page, setPage, data, setData, handleChange, disablePrev, disableNext, prevHide, nextHide, submitHide }}>
+        <IntakeFormContext.Provider value={{title, page, setPage, data, setData, handleChange, canSubmit, disablePrev, disableNext, prevHide, nextHide, submitHide }}>
             {children}
         </IntakeFormContext.Provider>
     )

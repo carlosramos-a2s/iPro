@@ -7,7 +7,7 @@ const ListApplicationsContext = createContext({})
 
 
 export const ListApplicationsProvider = ({children}) => {
-    let storedUserEmail = JSON.parse(window.localStorage.getItem('userEmail')) ? JSON.parse(window.localStorage.getItem('userEmail')) : '';
+    let userEmail = JSON.parse(window.localStorage.getItem('userEmail')) ? JSON.parse(window.localStorage.getItem('userEmail')) : 'placeholder';
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null);
@@ -15,14 +15,14 @@ export const ListApplicationsProvider = ({children}) => {
     const reqBody = {
         "requestEvent": "GET_APPLICATIONS",
         "requestBody": {
-            "userEmail": storedUserEmail
+            "userEmail": userEmail
         }
     }
 
     useEffect(() => {
         (async () => {
             setIsLoading(true);
-            fetch(apiEndpoint, {
+            fetch(`${apiEndpoint}/getapps`, {
                     method: 'POST',
                     headers: {
                         "x-api-key": apiKey,
@@ -34,7 +34,7 @@ export const ListApplicationsProvider = ({children}) => {
             .then(json => {
                 if (Array.isArray(json)) {
                     setData(json) 
-                }
+                }    
                 
                 setIsLoading(false); 
             })
@@ -57,7 +57,7 @@ export const ListApplicationsProvider = ({children}) => {
     }
 
     return (
-        <ListApplicationsContext.Provider value={{ data, isLoading, storedUserEmail, handleChange }}>
+        <ListApplicationsContext.Provider value={{ data, isLoading, userEmail, handleChange }}>
             {children}
         </ListApplicationsContext.Provider>
     )

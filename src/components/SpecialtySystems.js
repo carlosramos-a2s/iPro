@@ -12,14 +12,30 @@ const SpecialtySytems = () => {
                     Is this system a space platform?
                 </label>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="specSysSpaceYes" id="specSysSpaceYes" value={data.specSysSpaceYes} onChange={handleChange} />
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="specSysSpace" 
+                        id="specSysSpaceYes" 
+                        checked={data.specSysSpace === 'Yes'}
+                        value="Yes" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="specSysSpaceYes">
                         Yes
                     </label>
                 </div>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="specSysSpaceNo" id="specSysSpaceNo" value={data.specSysSpaceNo} onChange={handleChange} />
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="specSysSpace" 
+                        id="specSysSpaceNo"
+                        checked={data.specSysSpace === 'No'} 
+                        value="No" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="specSysSpaceNo">
                         No
                     </label>
                 </div>
@@ -30,13 +46,29 @@ const SpecialtySytems = () => {
                     Will wireless technologies be used as a part of the system?
                 </label>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="specSysWirelessYes" id="specSysWirelessYes" value={data.specSysWirelessYes} onChange={handleChange} />
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="specSysWireless" 
+                        id="specSysWirelessYes"
+                        checked={data.specSysWireless === 'Yes'}  
+                        value="Yes" 
+                        onChange={handleChange} 
+                    />
+                    <label className="form-check-label" htmlFor="specSysWirelessYes">
                         Yes
                     </label>
                 </div>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="specSysWirelessNo" id="specSysWirelessNo" value={data.specSysWirelessNo} onChange={handleChange} />
+                    <input 
+                        className="form-check-input" 
+                        type="radio" 
+                        name="specSysWireless" 
+                        id="specSysWirelessNo" 
+                        checked={data.specSysWireless === 'No'}
+                        value="No" 
+                        onChange={handleChange} 
+                    />
                     <label className="form-check-label" htmlFor="flexRadioDefault1">
                         No
                     </label>

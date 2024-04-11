@@ -14,8 +14,9 @@ const ListApplications = ({children}) => {
 
     const handleViewApplication = (e) => {
         e.preventDefault();
-        window.localStorage.setItem('projectName', JSON.stringify(e.target.value));        
-        
+        window.localStorage.setItem('projectName', JSON.stringify(e.target.value));
+        window.localStorage.setItem('projectStatus', JSON.stringify(e.target.id));  
+           
         navigate('/intakeform')
     }
    
@@ -62,7 +63,7 @@ const ListApplications = ({children}) => {
                                         </div>
                                     </div>
                                     <div className="col-sm-6 view-app-btn">
-                                    <button type="button" className="btn btn-secondary" value={data[index].projectName} onClick={handleViewApplication}>View Application</button>
+                                    <button type="button" id={data[index].applicationStatus} className="btn btn-secondary" value={data[index].projectName} onClick={handleViewApplication}>View Application</button>
                                     </div>
                                 </div>
                             </div>

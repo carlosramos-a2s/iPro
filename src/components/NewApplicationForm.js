@@ -30,7 +30,7 @@ const NewApplicationForm = () => {
         window.localStorage.setItem('projectName', JSON.stringify(data.projectName));
         window.localStorage.setItem('companyName', JSON.stringify(data.companyName));
 
-        fetch(apiEndpoint, {
+        fetch(`${apiEndpoint}/createapp`, {
             method: 'POST',
             headers: {
                 "x-api-key": apiKey,
